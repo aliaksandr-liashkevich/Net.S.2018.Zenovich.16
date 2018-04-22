@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Net.S.2018.Zenovich.14")]
+[assembly: AssemblyTitle("Net.S.2018.Zenovich.16.App")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Net.S.2018.Zenovich.14")]
+[assembly: AssemblyProduct("Net.S.2018.Zenovich.16.App")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("e3db28c0-0613-4c5c-8ec4-9b04cd302c3a")]
+[assembly: Guid("ddc43a34-c88a-466a-9d6a-49601a779945")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
