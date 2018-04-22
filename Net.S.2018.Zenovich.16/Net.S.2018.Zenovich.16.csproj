@@ -40,7 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\IUrlRepository.cs" />
+    <Compile Include="Api\IUrlService.cs" />
+    <Compile Include="Api\IUrlValidatorService.cs" />
+    <Compile Include="Models\ParameterElement.cs" />
+    <Compile Include="Models\SegmentElement.cs" />
+    <Compile Include="Models\UrlAddressElement.cs" />
+    <Compile Include="Models\UrlAddressesRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UrlRepository.cs" />
+    <Compile Include="Services\UrlService.cs" />
+    <Compile Include="Services\UrlValidatorService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

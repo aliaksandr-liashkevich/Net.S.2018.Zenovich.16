@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Net.S.2018.Zenovich.16\Net.S.2018.Zenovich.16.csproj">
+      <Project>{5B0461B4-76B2-4C3B-AB9C-029D322BE176}</Project>
+      <Name>Net.S.2018.Zenovich.16</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
