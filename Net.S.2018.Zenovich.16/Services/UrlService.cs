@@ -12,11 +12,14 @@ namespace Net.S._2018.Zenovich._16.Services
     {
         private readonly IUrlRepository urlRepository;
 
+        private readonly IUrlParserService urlParserService;
+
         private bool disposed = false;
 
-        public UrlService(IUrlRepository urlRepository)
+        public UrlService(IUrlRepository urlRepository, IUrlParserService urlParserService)
         {
             this.urlRepository = urlRepository;
+            this.urlParserService = urlParserService;
         }
 
         ~UrlService()
@@ -24,11 +27,23 @@ namespace Net.S._2018.Zenovich._16.Services
             CleanUp(false);
         }
 
-        public void AddElements(FileStream fileStream)
+        public void AddElements(string filePath)
         {
-            if (ReferenceEquals(fileStream, null))
+            if (string.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentNullException(nameof(fileStream));
+                throw new ArgumentException($"{nameof(filePath)} is null or empty.");
+            }
+
+            if (File.Exists(filePath))
+            {
+                using (var streamReader = new StreamReader(filePath))
+                {
+                    var url = streamReader.ReadLine();
+                    if (urlParserService.IsUrl(url))
+                    {
+                        urlRepository.Add(urlParserService.Url);
+                    }
+                }
             }
         }
 

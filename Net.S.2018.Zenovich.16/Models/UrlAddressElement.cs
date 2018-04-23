@@ -16,10 +16,12 @@ namespace Net.S._2018.Zenovich._16.Models
         [XmlElement("host")]
         public string Host { get; set; }
 
-        [XmlArrayItem("uri")]
-        public List<SegmentElement> Uri { get; set; }
+        [XmlArray("uri")]
+        [XmlArrayItem("segment")]
+        public List<string> Uri { get; set; }
 
-        [XmlArrayItem("parameters")]
+        [XmlArray("parameters")]
+        [XmlArrayItem("parameter")]
         public List<ParameterElement> Parameters { get; set; }
     }
 }

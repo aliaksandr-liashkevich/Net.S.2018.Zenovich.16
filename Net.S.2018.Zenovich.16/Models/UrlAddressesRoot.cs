@@ -7,9 +7,11 @@ using System.Xml.Serialization;
 
 namespace Net.S._2018.Zenovich._16.Models
 {
+    [XmlRoot("urlRoot")]
     public class UrlAddressesRoot
     {
         [XmlArray("urlAddresses")]
-        public List<UrlAddressElement> UrlAddresses { get; set; }
+        [XmlArrayItem("urlAddress")]
+        public List<UrlAddressElement> UrlAddresses;
     }
 }

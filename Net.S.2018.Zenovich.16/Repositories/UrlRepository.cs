@@ -29,7 +29,7 @@ namespace Net.S._2018.Zenovich._16.Repositories
         {
             root = new UrlAddressesRoot();
             root.UrlAddresses = new List<UrlAddressElement>();
-            serializer = new XmlSerializer(typeof(List<UrlAddressElement>));
+            serializer = new XmlSerializer(typeof(UrlAddressesRoot));
         }
 
         public void Add(UrlAddressElement element)
@@ -46,7 +46,7 @@ namespace Net.S._2018.Zenovich._16.Repositories
         {
             using (var stream = new FileStream(FilePath, FileMode.Create))
             {
-                serializer.Serialize(stream, root.UrlAddresses);
+                serializer.Serialize(stream, root);
             }
         }
     }

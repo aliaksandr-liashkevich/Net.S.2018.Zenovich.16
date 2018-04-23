@@ -10,11 +10,10 @@ namespace Net.S._2018.Zenovich._16.Models
     [XmlRoot("parameter")]
     public class ParameterElement
     {
-        [XmlAttribute("value")]
-        public string Value { get; set; }
-
         [XmlAttribute("key")]
         public string Key { get; set; }
+
+        [XmlAttribute("value")]
+        public string Value { get; set; }
     }
 }
-    

@@ -9,6 +9,6 @@ namespace Net.S._2018.Zenovich._16.Api
 {
     public interface IUrlService : IDisposable
     {
-        void AddElements(FileStream fileStream);
+        void AddElements(string filePath);
     }
 }
