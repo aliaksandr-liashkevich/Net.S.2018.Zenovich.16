@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<urlRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <urlAddresses>
+    <urlAddress>
+      <schema>https</schema>
+      <host>github.com</host>
+      <uri>
+        <segment>AnzhelikaKravchuk</segment>
+      </uri>
+      <parameters>
+        <parameter key="tab" value="repositories" />
+      </parameters>
+    </urlAddress>
+    <urlAddress>
+      <schema>https</schema>
+      <host>github.com</host>
+      <uri>
+        <segment>AnzhelikaKravchuk</segment>
+        <segment>2017-2018.MMF.BSU</segment>
+      </uri>
+    </urlAddress>
+    <urlAddress>
+      <schema>https</schema>
+      <host>habrahabr.ru</host>
+      <uri>
+        <segment>company</segment>
+        <segment>it-grad</segment>
+        <segment>blog</segment>
+        <segment>341486</segment>
+      </uri>
+    </urlAddress>
+    <urlAddress>
+      <schema>https</schema>
+      <host>google.com</host>
+    </urlAddress>
+    <urlAddress>
+      <schema>https</schema>
+      <host>alexander.zenovich.com</host>
+      <uri>
+        <segment>products</segment>
+        <segment>tables</segment>
+      </uri>
+      <parameters>
+        <parameter key="qwe" value="123" />
+        <parameter key="user" value="alex" />
+        <parameter key="password" value="qwe123" />
+      </parameters>
+    </urlAddress>
+  </urlAddresses>
+</urlRoot>

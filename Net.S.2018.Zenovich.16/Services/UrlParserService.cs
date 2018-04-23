@@ -28,20 +28,19 @@ namespace Net.S._2018.Zenovich._16.Services
             SegmentPattern = @"[a-zA-Z0-9\-\.]+";
             ParameterPattern = @"([a-zA-Z0-9\-\.]+)=([a-zA-Z0-9\-\.]+)";
 
-            UrlPattern = $@"^({SchemaPattern})\://({HostPattern})((/{SegmentPattern})+)?(\?{ParameterPattern}(&{ParameterPattern})*)?$";
+            UrlPattern = $@"^({SchemaPattern})\://({HostPattern})((/{SegmentPattern})+)?(\?{ParameterPattern}(&{ParameterPattern})*)?/?$";
         }
 
         public bool IsUrl(string url)
         {
             if (Regex.IsMatch(url, UrlPattern))
             {
-                UrlAddressElement element = new UrlAddressElement();
-
                 Match match = Regex.Match(url, UrlPattern);
 
+                Url = new UrlAddressElement();
 
-                element.Schema = match.Groups[1].Value;
-                element.Host = match.Groups[2].Value;
+                Url.Schema = match.Groups[1].Value;
+                Url.Host = match.Groups[2].Value;
 
                 string segments = match.Groups[3].Value;
                 string parameters = match.Groups[5].Value;
@@ -54,11 +53,11 @@ namespace Net.S._2018.Zenovich._16.Services
 
                     if (list.Count > 0)
                     {
-                        element.Uri = new List<string>();
+                        Url.Uri = new List<string>();
 
                         foreach (var item in list)
                         {
-                            element.Uri.Add(item.Value);
+                            Url.Uri.Add(item.Value);
                         }
                     }
                 }
@@ -74,11 +73,11 @@ namespace Net.S._2018.Zenovich._16.Services
 
                     if (dict.Values.Count > 0)
                     {
-                        element.Parameters = new List<ParameterElement>();
+                        Url.Parameters = new List<ParameterElement>();
 
                         foreach (var item in dict)
                         {
-                            element.Parameters.Add(new ParameterElement()
+                            Url.Parameters.Add(new ParameterElement()
                             {
                                 Key = item.Key,
                                 Value = item.Value

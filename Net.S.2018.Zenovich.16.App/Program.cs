@@ -14,23 +14,10 @@ namespace Net.S._2018.Zenovich._16.App
     {
         static void Main(string[] args)
         {
-            IUrlParserService urlParserService = new UrlParserService();
-
-            // string url = "https://github.com/AnzhelikaKravchuk?tab=repositories";
-            string url = "https://github.com/AnzhelikaKravchuk/Alexander/Boboasd?key=value&qwe=123&qweqwe=asads";
-
-            if (urlParserService.IsUrl(url))
+            using (var service = new UrlService(new UrlRepository(), new UrlParserService()))
             {
-               Console.WriteLine(urlParserService.Url.Schema);
-               Console.WriteLine(urlParserService.Url.Host);
+                service.AddElements("urls.txt");
             }
-
-            UrlService urlService = new UrlService(new UrlRepository(), new UrlParserService());
-
-            
-            urlService.AddElements(null);
-            urlService.Dispose();
-
 
             Console.ReadKey();
         }

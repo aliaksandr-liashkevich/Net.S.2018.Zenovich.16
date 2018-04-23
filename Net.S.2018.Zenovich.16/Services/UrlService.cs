@@ -36,12 +36,19 @@ namespace Net.S._2018.Zenovich._16.Services
 
             if (File.Exists(filePath))
             {
+                
                 using (var streamReader = new StreamReader(filePath))
                 {
-                    var url = streamReader.ReadLine();
-                    if (urlParserService.IsUrl(url))
+                    string url = string.Empty;
+
+                    while (streamReader.EndOfStream == false)
                     {
-                        urlRepository.Add(urlParserService.Url);
+                        url = streamReader.ReadLine();
+
+                        if (urlParserService.IsUrl(url))
+                        {
+                            urlRepository.Add(urlParserService.Url);
+                        }
                     }
                 }
             }
