@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Net.S._2018.Zenovich._16.Api;
+using Net.S._2018.Zenovich._16.Loggers;
 
 namespace Net.S._2018.Zenovich._16.Services
 {
@@ -14,12 +16,16 @@ namespace Net.S._2018.Zenovich._16.Services
 
         private readonly IUrlParserService urlParserService;
 
+        private readonly ILogger logger;
+
         private bool disposed = false;
 
-        public UrlService(IUrlRepository urlRepository, IUrlParserService urlParserService)
+        public UrlService(IUrlRepository urlRepository, 
+            IUrlParserService urlParserService)
         {
             this.urlRepository = urlRepository;
             this.urlParserService = urlParserService;
+            this.logger = Extensions.GetLogger();
         }
 
         ~UrlService()
@@ -48,6 +54,10 @@ namespace Net.S._2018.Zenovich._16.Services
                         if (urlParserService.IsUrl(url))
                         {
                             urlRepository.Add(urlParserService.Url);
+                        }
+                        else
+                        {
+                            logger.LogInformation("{0} isn't url.", url);
                         }
                     }
                 }

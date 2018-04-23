@@ -76,6 +76,9 @@
     <Compile Include="Api\IUrlRepository.cs" />
     <Compile Include="Api\IUrlService.cs" />
     <Compile Include="Api\IUrlParserService.cs" />
+    <Compile Include="Loggers\Extensions.cs" />
+    <Compile Include="Loggers\FileLogger.cs" />
+    <Compile Include="Loggers\FileLoggerProvider.cs" />
     <Compile Include="Models\ParameterElement.cs" />
     <Compile Include="Models\UrlAddressElement.cs" />
     <Compile Include="Models\UrlAddressesRoot.cs" />
