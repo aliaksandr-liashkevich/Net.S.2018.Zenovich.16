@@ -10,8 +10,8 @@ namespace Net.S._2018.Zenovich._16.Api
 {
     public interface IUrlParserService
     {
-        bool IsUrl(string url);
-
         UrlAddressElement Url { get; }
+
+        bool IsUrl(string url);
     }
 }

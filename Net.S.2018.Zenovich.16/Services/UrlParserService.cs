@@ -9,8 +9,14 @@ using Net.S._2018.Zenovich._16.Models;
 
 namespace Net.S._2018.Zenovich._16.Services
 {
+    /// <summary>
+    /// Implements parsing operation.
+    /// </summary>
+    /// <seealso cref="Net.S._2018.Zenovich._16.Api.IUrlParserService" />
     public class UrlParserService : IUrlParserService
     {
+        #region Fields
+
         public static readonly string UrlPattern;
 
         public static readonly string SchemaPattern;
@@ -20,6 +26,10 @@ namespace Net.S._2018.Zenovich._16.Services
         public static readonly string ParameterPattern;
 
         public static readonly string SegmentPattern;
+
+        #endregion Fields
+
+        #region Ctor
 
         static UrlParserService()
         {
@@ -31,6 +41,29 @@ namespace Net.S._2018.Zenovich._16.Services
             UrlPattern = $@"^({SchemaPattern})\://({HostPattern})((/{SegmentPattern})+)?(\?{ParameterPattern}(&{ParameterPattern})*)?/?$";
         }
 
+        #endregion Ctor
+
+        #region Public properties
+
+        /// <summary>
+        /// Get the url.
+        /// </summary>
+        /// <value>
+        /// If url method returns true, url defined.
+        /// </value>
+        public UrlAddressElement Url { get; protected set; }
+
+        #endregion Public properties
+
+        #region Public methods
+
+        /// <summary>
+        /// Determines whether the specified <paramref name="url"/> is Uniform Resource Locator.
+        /// </summary>
+        /// <param name="url">The specified url.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <paramref name="url"/> is URL; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsUrl(string url)
         {
             if (Regex.IsMatch(url, UrlPattern))
@@ -66,7 +99,6 @@ namespace Net.S._2018.Zenovich._16.Services
                 {
                     var matchParameters = Regex.Matches(parameters, ParameterPattern);
 
-
                     var dict = matchParameters.Cast<Match>().ToDictionary(
                         m => m.Groups[1].Value,
                         m => m.Groups[2].Value);
@@ -92,7 +124,6 @@ namespace Net.S._2018.Zenovich._16.Services
             return false;
         }
 
-        public UrlAddressElement Url { get; protected set; }
-
+        #endregion Public methods
     }
 }

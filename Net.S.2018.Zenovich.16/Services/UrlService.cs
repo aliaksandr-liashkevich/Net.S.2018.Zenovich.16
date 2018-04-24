@@ -10,8 +10,14 @@ using Net.S._2018.Zenovich._16.Loggers;
 
 namespace Net.S._2018.Zenovich._16.Services
 {
+    /// <summary>
+    /// Includes business logic operation.
+    /// </summary>
+    /// <seealso cref="Net.S._2018.Zenovich._16.Api.IUrlService" />
     public class UrlService : IUrlService
     {
+        #region Fields
+
         private readonly IUrlRepository urlRepository;
 
         private readonly IUrlParserService urlParserService;
@@ -20,7 +26,12 @@ namespace Net.S._2018.Zenovich._16.Services
 
         private bool disposed = false;
 
-        public UrlService(IUrlRepository urlRepository, 
+        #endregion Fields
+
+        #region Ctor
+
+        public UrlService(
+            IUrlRepository urlRepository, 
             IUrlParserService urlParserService)
         {
             this.urlRepository = urlRepository;
@@ -28,21 +39,35 @@ namespace Net.S._2018.Zenovich._16.Services
             this.logger = Extensions.GetLogger();
         }
 
+        #endregion Ctor
+
+        #region Destructor
+
         ~UrlService()
         {
             CleanUp(false);
         }
 
+        #endregion Destructor
+
+        #region Public methods
+
+        /// <summary>
+        /// Adds the url elements.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="filePath"/> is null
+        /// </exception>
         public void AddElements(string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
             {
-                throw new ArgumentException($"{nameof(filePath)} is null or empty.");
+                throw new ArgumentNullException($"{nameof(filePath)} is null or empty.");
             }
 
             if (File.Exists(filePath))
             {
-                
                 using (var streamReader = new StreamReader(filePath))
                 {
                     string url = string.Empty;
@@ -62,6 +87,10 @@ namespace Net.S._2018.Zenovich._16.Services
                     }
                 }
             }
+            else
+            {
+                logger.LogInformation("{0} doesn't exist.", filePath);
+            }
         }
 
         public void Dispose()
@@ -69,6 +98,10 @@ namespace Net.S._2018.Zenovich._16.Services
             CleanUp(true);
             GC.SuppressFinalize(this);
         }
+
+        #endregion Public methods
+
+        #region Private methods
 
         private void CleanUp(bool clean)
         {
@@ -79,7 +112,10 @@ namespace Net.S._2018.Zenovich._16.Services
                     urlRepository.Save();
                 }
             }
+
             this.disposed = true;
         }
+
+        #endregion Private methods
     }
 }

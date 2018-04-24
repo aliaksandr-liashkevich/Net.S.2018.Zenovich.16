@@ -12,6 +12,6 @@ namespace Net.S._2018.Zenovich._16.Models
     {
         [XmlArray("urlAddresses")]
         [XmlArrayItem("urlAddress")]
-        public List<UrlAddressElement> UrlAddresses;
+        public List<UrlAddressElement> UrlAddresses { get; set; }
     }
 }
